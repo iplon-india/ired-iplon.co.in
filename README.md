@@ -1,2 +1,2 @@
 # ired-iplon.co.in
-for hosting node red applications
+for deployment of ired with ingress
