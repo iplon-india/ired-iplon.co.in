@@ -1,0 +1,81 @@
+replicaCount: 1
+
+namespace: ired
+appname: ired
+
+image:
+  repository: asia.gcr.io/iplon-india/ired302
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+  port: 1880
+  portname: ired-http
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+configmap_nodered:
+  name: ired
+  mountpath: "/usr/src/node-red/node_modules/node-red/settings.js"
+  subpath: "settings.js"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: 
+   runAsUser: 0
+
+ingress:
+  class: ired-ingress
+  enabled: true
+  annotations: 
+    kubernetes.io/ingress.class: ired-ingress
+    cert-manager.io/cluster-issuer: "letsencrypt-prod-ired"
+    kubernetes.io/force-ssl-redirect: 'true'
+    kubernetes.io/ingress.allow-http: "false"
+  hosts:
+    host: ired.iplon.co.in
+    path: "/"
+    
+    
+  tls: 
+    secretName: ired-tls-prod
+    host: ired.iplon.co.in
+
+service:
+  type: ClusterIP
+  port: 80
+
+
+resources: 
+  limits:
+    cpu: 15m
+    memory: 250Mi
+  requests:
+    cpu: 8m
+    memory: 180Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
