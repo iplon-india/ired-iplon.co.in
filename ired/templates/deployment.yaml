@@ -34,11 +34,19 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: NODE_RED_ENABLE_PROJECTS
+            value: "true"
           volumeMounts:
           - name: {{ .Values.configmap_nodered.name }}
             mountPath: {{ .Values.configmap_nodered.mountpath }}
             subPath: {{ .Values.configmap_nodered.subpath }}
             readOnly: false
+          - name: {{ .Values.nodered_mount.name }}
+            mountPath: {{ .Values.nodered_mount.path }}
+            subPath: {{ .Values.nodered_mount.subpath }}
+            
+           
           ports:
             - name: {{ .Values.image.portname }}
               containerPort: {{ .Values.image.port }}
@@ -49,7 +57,11 @@ spec:
       volumes:
       - name: {{ .Values.configmap_nodered.name }}
         configMap:
-          name: {{ .Values.configmap_nodered.name }}      
+          name: {{ .Values.configmap_nodered.name }}
+      - name: {{ .Values.nodered_mount.name }}
+        persistentVolumeClaim:
+            claimName: {{ .Values.nodeflow_storage.pvcname }}    
+      
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

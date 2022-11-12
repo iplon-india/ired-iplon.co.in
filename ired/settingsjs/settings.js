@@ -54,11 +54,13 @@ module.exports = {
      * property can be used
      */
     //userDir: '/home/nol/.node-red/',
+    userDir: '/data/',
 
     /** Node-RED scans the `nodes` directory in the userDir to find local node files.
      * The following property can be used to specify an additional directory to scan.
      */
     //nodesDir: '/home/nol/.node-red/nodes',
+    nodesDir: '/data/nodes',
 
 /*******************************************************************************
  * Security
@@ -77,7 +79,7 @@ module.exports = {
         type: "credentials",
         users: [{
             username: "admin",
-            password: "$2b$08$N2gOkdwJ3Q0gG.yUK6ODIenJbN3aP/c2dLsb71Hj2.UbKv9PtS4J2",
+            password: "$2b$08$dDjjq.d3o3W0aKfLbRzR7e9m9HNXsYvAeYLb9U3KGmPHvfcLwYk7u",
             permissions: "*"
         }]
     },
@@ -390,7 +392,7 @@ module.exports = {
 
         projects: {
             /** To enable the Projects feature, set this value to true */
-            enabled: false,
+            enabled: true,
             workflow: {
                 /** Set the default projects workflow mode.
                  *  - manual - you must manually commit changes
