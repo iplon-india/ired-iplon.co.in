@@ -3,7 +3,7 @@ kind: Config
 deploy:
   helm:
     releases:
-    - name: ired
+    - name: ired-amplasia
       chartPath: ./ired
       namespace: ired
       #wait: true

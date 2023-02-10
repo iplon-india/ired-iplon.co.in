@@ -3,7 +3,7 @@ steps:
   entrypoint: gcloud
   args: [ "deploy", "releases", "create" , "${_RELEASE_NAME}-${SHORT_SHA}", "--delivery-pipeline","iplon-deployment", "--region", "us-west2"]
 substitutions:
-  _RELEASE_NAME: ired-iplon
+  _RELEASE_NAME: ired-amplasia
 
 options:
   logging: CLOUD_LOGGING_ONLY
