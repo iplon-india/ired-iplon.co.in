@@ -11,21 +11,147 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  
+
   tls:
     - hosts:
-      - {{ .Values.ingress.hosts.host }}  
+      - {{ .Values.ingress.hosts.host }}
       secretName: {{ .Values.ingress.tls.secretName }}
-    
+
   rules:
   - host: {{ .Values.ingress.hosts.host }}
     http:
         paths:
-          - path: {{ .Values.ingress.hosts.path }}
+          - path: "{{ .Values.ingress.hosts.path }}"
             pathType: Prefix
             backend:
               service:
                 name: {{ .Values.appname }}-svc
                 port: 
                   number: {{ .Values.service.port }}
+
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.amplasia.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname1 }}-svc
+                port: 
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.iplasia.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname2 }}-svc
+                port: 
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.lulasia.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname3 }}-svc
+                port: 
+                  number: {{ .Values.service.port }}
+
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.africa.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname4 }}-svc
+                port: 
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.america.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname5 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.asiafive.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname6 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.asiafour.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname7 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.asiathree.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname8 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.asiatwo.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname9 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.asiaone.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname10 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.asiasix.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname11 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+  - host: {{ .Values.ingress.hosts.host }}
+    http:
+        paths:
+          - path: {{ .Values.ingress.sulasia.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname12 }}-svc
+                port:
+                  number: {{ .Values.service.port }}
+  
+
 {{ end }}

@@ -2,6 +2,19 @@ replicaCount: 1
 
 namespace: ired
 appname: ired
+appname1: ired-amplasia
+appname2: ired-iplasia
+appname3: ired-lulasia
+appname4: ired-mglafrica
+appname5: ired-mglamerica
+appname6: ired-mglasiafive
+appname7: ired-mglasiafour
+appname8: ired-mglasiathree
+appname9: ired-malasiatwo
+appname10: ired-mglasiaone
+appname11: ired-mglasiasix
+appname12: ired-sulasia
+
 
 image:
   repository: asia.gcr.io/iplon-india/ired302
@@ -34,23 +47,68 @@ serviceAccount:
 podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
-securityContext: 
+securityContext:
    runAsUser: 0
 
 ingress:
   class: ired-ingress
   enabled: true
-  annotations: 
+  annotations:
     kubernetes.io/ingress.class: ired-ingress
     cert-manager.io/cluster-issuer: "letsencrypt-prod-ired"
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
   hosts:
     host: ired.iplon.co.in
     path: "/"
-    
-    
-  tls: 
+  amplasia:
+    host: ired.iplon.co.in
+    path: "/amplasia"
+  iplasia:
+    host: ired.iplon.co.in
+    path: "/iplasia"
+  lulasia:
+    host: ired.iplon.co.in
+    path: "/lulasia"
+  africa:
+    host: ired.iplon.co.in
+    path: "/africa"
+  america:
+    host: ired.iplon.co.in
+    path: "/america"
+  asiafive:
+    host: ired.iplon.co.in
+    path: "/asiafive"
+  asiafour:
+    host: ired.iplon.co.in
+    path: "/asiafour"
+  asiathree:
+    host: ired.iplon.co.in
+    path: "/asiathree"
+  asiatwo:
+    host: ired.iplon.co.in
+    path: "/asiatwo"
+  asiaone:
+    host: ired.iplon.co.in
+    path: "/asiaone"
+
+  asiasix:
+    host: ired.iplon.co.in
+    path: "/asiasix"
+
+  sulasia:
+    host: ired.iplon.co.in
+    path: "/sulasia"
+
+
+
+
+
+
+
+
+  tls:
     secretName: ired-tls-prod
     host: ired.iplon.co.in
 
@@ -59,7 +117,7 @@ service:
   port: 80
 
 
-resources: 
+resources:
   limits:
     cpu: 85m
     memory: 550Mi
@@ -80,7 +138,7 @@ nodeflow_storage:
   nfsserver: nfs-master-kube.asia-south1-a.c.iplon-india.internal
   accessModes: ReadWriteMany
   storageClassName: premium-rwx
-  
+
 autoscaling:
   enabled: false
   minReplicas: 1
