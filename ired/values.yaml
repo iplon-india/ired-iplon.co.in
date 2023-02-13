@@ -29,7 +29,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 configmap_nodered:
-  name: ired
+  name: ired-amplasia
   mountpath: "/usr/lib/node_modules/node-red/settings.js"
   subpath: "settings.js"
 
@@ -131,10 +131,10 @@ nodered_mount:
    subpath: ""
 
 nodeflow_storage:
-  pvname: ired-pv
-  pvcname: ired-pvc
+  pvname: ired-amplasia-pv
+  pvcname: ired-amplasia-pvc
   size: 10Gi
-  mountpath: /mnt/disks/knfs/nodered
+  mountpath: /mnt/disks/knfs/
   nfsserver: nfs-master-kube.asia-south1-a.c.iplon-india.internal
   accessModes: ReadWriteMany
   storageClassName: premium-rwx
