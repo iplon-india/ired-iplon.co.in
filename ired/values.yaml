@@ -10,7 +10,7 @@ appname5: ired-mglamerica
 appname6: ired-mglasiafive
 appname7: ired-mglasiafour
 appname8: ired-mglasiathree
-appname9: ired-malasiatwo
+appname9: ired-mglasiatwo
 appname10: ired-mglasiaone
 appname11: ired-mglasiasix
 appname12: ired-sulasia
@@ -59,6 +59,7 @@ ingress:
     kubernetes.io/force-ssl-redirect: 'true'
     kubernetes.io/ingress.allow-http: "false"
     nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.org/client-max-body-size: "999m"
   hosts:
     host: ired.iplon.co.in
     path: "/"
@@ -100,12 +101,6 @@ ingress:
   sulasia:
     host: ired.iplon.co.in
     path: "/sulasia"
-
-
-
-
-
-
 
 
   tls:
