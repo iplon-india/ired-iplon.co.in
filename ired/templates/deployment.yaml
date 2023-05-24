@@ -60,7 +60,7 @@ spec:
           name: {{ .Values.configmap_nodered.name }}
       - name: {{ .Values.nodered_mount.name }}
         persistentVolumeClaim:
-            claimName: {{ .Values.nodeflow_storage.pvcname }}    
+            claimName: {{ .Values.nodeflow_storage.pvcname }}
       
       {{- with .Values.nodeSelector }}
       nodeSelector:
