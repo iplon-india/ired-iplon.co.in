@@ -102,6 +102,7 @@ ingress:
   sulasia:
     host: ired.iplon.co.in
     path: "/sulasia"
+    
   europe:
     host: ired.iplon.co.in
     path: "/europe"
