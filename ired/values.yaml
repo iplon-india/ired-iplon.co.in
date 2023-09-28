@@ -15,6 +15,7 @@ appname10: ired-mglasiaone
 appname11: ired-mglasiasix
 appname12: ired-sulasia
 appname13: ired-europe
+appname14: ired-dev
 
 
 image:
@@ -102,10 +103,14 @@ ingress:
   sulasia:
     host: ired.iplon.co.in
     path: "/sulasia"
-    
+
   europe:
     host: ired.iplon.co.in
     path: "/europe"
+
+  dev:
+    host: ired.iplon.co.in
+    path: "/dev"
 
 
   tls:
