@@ -53,15 +53,16 @@ securityContext:
    runAsUser: 0
 
 ingress:
-  class: ired-ingress
+  class: public-ingress
   enabled: true
   annotations:
-    kubernetes.io/ingress.class: ired-ingress
+    # kubernetes.io/ingress.class: ired-ingress
+    kubernetes.io/ingress.class: public-ingress
     cert-manager.io/cluster-issuer: "letsencrypt-prod-ired"
     kubernetes.io/force-ssl-redirect: 'true'
-    kubernetes.io/ingress.allow-http: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.org/client-max-body-size: "999m"
+    # kubernetes.io/ingress.allow-http: "false"
+    # nginx.ingress.kubernetes.io/use-regex: "true"
+    # nginx.org/client-max-body-size: "999m"
   hosts:
     host: ired.iplon.co.in
     path: "/"
