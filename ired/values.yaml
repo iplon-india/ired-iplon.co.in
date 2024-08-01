@@ -58,7 +58,7 @@ ingress:
   annotations:
     # kubernetes.io/ingress.class: ired-ingress
     kubernetes.io/ingress.class: public-ingress
-    cert-manager.io/cluster-issuer: "letsencrypt-prod-ired"
+    cert-manager.io/cluster-issuer: "letsencrypt-public-ingress"
     kubernetes.io/force-ssl-redirect: 'true'
     # kubernetes.io/ingress.allow-http: "false"
     # nginx.ingress.kubernetes.io/use-regex: "true"
@@ -115,7 +115,7 @@ ingress:
 
 
   tls:
-    secretName: ired-tls-prod
+    secretName: ired-secret-prod
     host: ired.iplon.co.in
 
 service:
